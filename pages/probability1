@@ -1,196 +1,382 @@
+<blockquote>
+  <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
 
 
 
-> Written with [StackEdit](https://stackedit.io/).
+<h1 id="probability-essentials">Probability Essentials</h1>
 
-# Probability Essentials
+<dl>
+<dt>Subjective Probability</dt>
+<dd>A measure of a person’s belief in the occurrence of an event.
 
-Subjective Probability
-:	A measure of a person's belief in the occurrence of an event.
->For example if a meteorologist says "There is a 60% probability of rain tomorrow"
+<blockquote>
+  For example if a meteorologist says “There is a 60% probability of rain tomorrow”
+</blockquote></dd>
+</dl>
 
-Lets look at an example in order to derive a more concrete notion of probability. 
-####What is the probability of rolling a 1 on a standard six sided die? 
-
-Based on symmetry and the fact that dice are cubical, we can assume all sides of the face are equally likely to be rolled. There are six faces, so the probability of rolling any one of those faces is 1/6. This is the *classical* notion of probability, first defined by Laplace.
-
-Classical Probability
-: Probability ... is thus simply a fraction whose numerator is the number of favorable cases and whose denominator is the number of all the cases possible ... when nothing leads us to expect that any one of these cases should occur more than any other.[^footnote].
->*Key Point*: Notice the line "nothing leads us to expect that any one of these cases should occur more than any other. In other words **classical probability assumes that the likelihood of all events must be equal.**
-> *Example*:  If you flip a fair coin 3 times what are the odds of getting 2 heads?
-	> We want to find the fraction $\frac{\text{favorable cases}}{\text{all possible cases}}$. There are 8 possible cases so the denominator is 8 (HHH, HHT, HTH, THH, TTH, THT, HTT, TTT). There are 3 favorable cases (TTH, THT, HTT) so the numerator is 3. The odds of getting 2 heads in 3 flips of a fair coin are $\frac{3}{8}$.
+<p>Lets look at an example in order to derive a more concrete notion of probability. </p>
 
 
-[^footnote]: As stated in Laplace's Théorie analytique des probabilités ([wiki](https://en.wikipedia.org/wiki/Classical_definition_of_probability))
 
-The downside of this definition is that it requires events to be equiprobable. It works well for coin flips, and die rolls, but not for more complicated scenarios.
+<h4 id="what-is-the-probability-of-rolling-a-1-on-a-standard-six-sided-die">What is the probability of rolling a 1 on a standard six sided die?</h4>
 
-Another way of looking at the die roll experiment is to image rolling a standard six-sided die repeatedly. The empirical probability of rolling a 1 is the ratio of the number of times a 1 is rolled to the total number of rolls. In general this can be described as 
+<p>Based on symmetry and the fact that dice are cubical, we can assume all sides of the face are equally likely to be rolled. There are six faces, so the probability of rolling any one of those faces is 1/6. This is the <em>classical</em> notion of probability, first defined by Laplace.</p>
 
-$$
+<dl>
+<dt>Classical Probability</dt>
+<dd>Probability … is thus simply a fraction whose numerator is the number of favorable cases and whose denominator is the number of all the cases possible … when nothing leads us to expect that any one of these cases should occur more than any other.<a href="#fn:footnote" id="fnref:footnote" title="See footnote" class="footnote">1</a>.
+
+<blockquote>
+  <em>Key Point</em>: Notice the line “nothing leads us to expect that any one of these cases should occur more than any other. In other words <strong>classical probability assumes that the likelihood of all events must be equal.</strong> <br>
+  <em>Example</em>:  If you flip a fair coin 3 times what are the odds of getting 2 heads? <br>
+  We want to find the fraction <script type="math/tex" id="MathJax-Element-18600">\frac{\text{favorable cases}}{\text{all possible cases}}</script>. There are 8 possible cases so the denominator is 8 (HHH, HHT, HTH, THH, TTH, THT, HTT, TTT). There are 3 favorable cases (TTH, THT, HTT) so the numerator is 3. The odds of getting 2 heads in 3 flips of a fair coin are <script type="math/tex" id="MathJax-Element-18601">\frac{3}{8}</script>.
+</blockquote></dd>
+</dl>
+
+<p>The downside of this definition is that it requires events to be equiprobable. It works well for coin flips, and die rolls, but not for more complicated scenarios.</p>
+
+<p>Another way of looking at the die roll experiment is to image rolling a standard six-sided die repeatedly. The empirical probability of rolling a 1 is the ratio of the number of times a 1 is rolled to the total number of rolls. In general this can be described as </p>
+
+
+
+<p><script type="math/tex; mode=display" id="MathJax-Element-18602">
 \text{empirical probability of a certain event}= \frac{\text{number of times event occurs}}{\text{total number of trials}}
-$$
+</script></p>
 
-Intuitively as we perform more dice rolls, the empirical probability of rolling a 1 should approach some mythical quantity which we call the true probability of rolling a 1. This is the *empirical* or *frequentist* approach to probability.
+<p>Intuitively as we perform more dice rolls, the empirical probability of rolling a 1 should approach some mythical quantity which we call the true probability of rolling a 1. This is the <em>empirical</em> or <em>frequentist</em> approach to probability.</p>
 
-Empirical Probability
-: The empirical probability, relative frequency, or experimental probability of an event is the ratio of the number of outcomes in which a specified event occurs to the total number of trials
->In a more general sense, **empirical probability estimates probabilities from experience and observation**
+<dl>
+<dt>Empirical Probability</dt>
+<dd>The empirical probability, relative frequency, or experimental probability of an event is the ratio of the number of outcomes in which a specified event occurs to the total number of trials
 
-For a standard six sided die,  it makes sense that the empirical probability should approach the classical probability of $\frac{1}{6}$. The main advantage of the empirical approach over the classical approach is that we do not require symmetry to compute probabilities. As a simple example of this, think about how you would determine the probability of rolling a 1 if someone handed you a loaded die. With the classical approach, you are out of luck, since you don't know the die is loaded. In the empirical approach, you would simply roll the die repeatedly, counting the number of times each number is rolled. Then the probability of any number is given by the equation.
-$$
+<blockquote>
+  In a more general sense, <strong>empirical probability estimates probabilities from experience and observation</strong>
+</blockquote></dd>
+</dl>
+
+<p>For a standard six sided die,  it makes sense that the empirical probability should approach the classical probability of <script type="math/tex" id="MathJax-Element-18603">\frac{1}{6}</script>. The main advantage of the empirical approach over the classical approach is that we do not require symmetry to compute probabilities. As a simple example of this, think about how you would determine the probability of rolling a 1 if someone handed you a loaded die. With the classical approach, you are out of luck, since you don’t know the die is loaded. In the empirical approach, you would simply roll the die repeatedly, counting the number of times each number is rolled. Then the probability of any number is given by the equation. <br>
+<script type="math/tex; mode=display" id="MathJax-Element-18604">
 P(X) = \frac{\text{number of times X was rolled}}{\text{total number of rolls}}
-$$
-The downside of the empirical approach is that it requires experiments to be performed, which is not always possible. Just imagine if you were asked to calculate the probability that a nuclear reactor does not fail? We can't perform repeated tests of this type of thing. Because of that, we will focus on *axiomatic probability* which is based on *set theory*.
+</script> <br>
+The downside of the empirical approach is that it requires experiments to be performed, which is not always possible. Just imagine if you were asked to calculate the probability that a nuclear reactor does not fail? We can’t perform repeated tests of this type of thing. Because of that, we will focus on <em>axiomatic probability</em> which is based on <em>set theory</em>.</p>
 
-## Sample Spaces
-Set
-: A collection of distinct objects
-> {cat, dog, mouse} is a valid set because no objects are repeated.
-> {1, 1, 3} is an invalid set because it contains the number 1 twice.
 
-Sample Space
-: The set of all outcomes for a single experiment
->Examples
-1. A single coin flip S = {H, T}
-2. Roll of a standard, six sided die S = {1,2,3,4,5,6}
-3. Roll of two standard six sided dice. The table below. 
-4. Number of free throw attempts it takes to make a single basket S = {1,2,3, ...}. Often denoted $\mathbb{N}$
-5. Amount of rain that falls in a week S = [0, $\infty$]
-|_ |1|2|3|4|5|6|
-|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-|**1**|(1,1)|(1,2)|(1,3)|(1,4)|(1,5)|(1,6)|
-|**2**|(2,1)|(2,2)|(2,3)|(2,4)|(2,5)|(2,6)|
-|**3**|(3,1)|(3,2)|(3,3)|(3,4)|(3,5)|(3,6)|
-|**4**|(4,1)|(4,2)|(4,3)|(4,4)|(4,5)|(4,6)|
-|**5**|(5,1)|(5,2)|(5,3)|(5,4)|(5,5)|(5,6)|
-|**6**|(6,1)|(6,2)|(6,3)|(6,4)|(6,5)|(6,6)|
 
-Note that the first three sample spaces contain only a finite number of elements (2,6, 36 respectively). These are *finite sample spaces*.
+<h2 id="sample-spaces">Sample Spaces</h2>
 
-The fourth and fifth examples each contain an infinite number of elements however there is a key difference between them. The fourth example only contains natural numbers ($\mathbb{N}$) so it is *countably infinite*, and has the property that it is *countable*. The fifth example contains real numbers ($\mathbb{R}$) so it is *uncountably infinite*, and has the property that it is *uncountable*. This makes sense intuitively. You cannot for example count all the digits up to $\pi$. A sample space that is *finite* or *countable* is called *discrete*.
+<dl>
+<dt>Set</dt>
+<dd>A collection of distinct objects
 
-## Events and subsets
+<blockquote>
+  {cat, dog, mouse} is a valid set because no objects are repeated. <br>
+  {1, 1, 3} is an invalid set because it contains the number 1 twice.
+</blockquote></dd>
 
-Subset
-: A is a subset of B if every element in A is also contained in B. The sentence "A is a subset of S" is written A $\subset$ S.
-> *Example*: The set A = (1,2,3) is a subset of B = (1,2,3,4,5,6) however B is not a subset of A because the numbers (4,5,6) are not contained in A.
-> In math terms this would be written  A $\subset$ B, B $\not\subset$ A.
-> *Note* that the *direction* of the subset sign matters.
+<dt>Sample Space</dt>
+<dd>The set of all outcomes for a single experiment
 
-Empty Set
-: A set containing no elements, written $\emptyset$.
+<blockquote>
+  Examples <br>
+  1. A single coin flip S = {H, T} <br>
+  2. Roll of a standard, six sided die S = {1,2,3,4,5,6} <br>
+  3. Roll of two standard six sided dice. The table below.  <br>
+  4. Number of free throw attempts it takes to make a single basket S = {1,2,3, …}. Often denoted <script type="math/tex" id="MathJax-Element-18605">\mathbb{N}</script> <br>
+  5. Amount of rain that falls in a week S = [0, <script type="math/tex" id="MathJax-Element-18606">\infty</script>]
+</blockquote></dd>
+</dl>
 
-Event
-: A subset of a sample space.
-> *Example*: Consider the set S = {1, 2, 3, 4, 5, 6} representing the rolls of a single die. The following are possible events.
-> 1. A = {2, 4, 6}, the event that an even number is rolled
-> 2. B = {1, 2, 3}, the event that the roll is less than or equal to 3
-> 3. C = {1}, the event that a 1 is rolled
+<table>
+<thead>
+<tr>
+  <th align="center">_</th>
+  <th align="center">1</th>
+  <th align="center">2</th>
+  <th align="center">3</th>
+  <th align="center">4</th>
+  <th align="center">5</th>
+  <th align="center">6</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="center"><strong>1</strong></td>
+  <td align="center">(1,1)</td>
+  <td align="center">(1,2)</td>
+  <td align="center">(1,3)</td>
+  <td align="center">(1,4)</td>
+  <td align="center">(1,5)</td>
+  <td align="center">(1,6)</td>
+</tr>
+<tr>
+  <td align="center"><strong>2</strong></td>
+  <td align="center">(2,1)</td>
+  <td align="center">(2,2)</td>
+  <td align="center">(2,3)</td>
+  <td align="center">(2,4)</td>
+  <td align="center">(2,5)</td>
+  <td align="center">(2,6)</td>
+</tr>
+<tr>
+  <td align="center"><strong>3</strong></td>
+  <td align="center">(3,1)</td>
+  <td align="center">(3,2)</td>
+  <td align="center">(3,3)</td>
+  <td align="center">(3,4)</td>
+  <td align="center">(3,5)</td>
+  <td align="center">(3,6)</td>
+</tr>
+<tr>
+  <td align="center"><strong>4</strong></td>
+  <td align="center">(4,1)</td>
+  <td align="center">(4,2)</td>
+  <td align="center">(4,3)</td>
+  <td align="center">(4,4)</td>
+  <td align="center">(4,5)</td>
+  <td align="center">(4,6)</td>
+</tr>
+<tr>
+  <td align="center"><strong>5</strong></td>
+  <td align="center">(5,1)</td>
+  <td align="center">(5,2)</td>
+  <td align="center">(5,3)</td>
+  <td align="center">(5,4)</td>
+  <td align="center">(5,5)</td>
+  <td align="center">(5,6)</td>
+</tr>
+<tr>
+  <td align="center"><strong>6</strong></td>
+  <td align="center">(6,1)</td>
+  <td align="center">(6,2)</td>
+  <td align="center">(6,3)</td>
+  <td align="center">(6,4)</td>
+  <td align="center">(6,5)</td>
+  <td align="center">(6,6)</td>
+</tr>
+</tbody></table>
 
-The event C consists of a single element from the sample space. An event which consists of a single element is called a *simple event*. The events A and B are each composed of three simple events. 
 
-Now consider a sample space representing rolls of two dice. Let E be the event that the sum of the two dice is 7. We can represent this event graphically using a table where the first row represents the outcome of the first roll and the first column represents the outcome of the second roll. The event E consists of the rolls which are bolded. 
+<p>Note that the first three sample spaces contain only a finite number of elements (2,6, 36 respectively). These are <em>finite sample spaces</em>.</p>
 
-|_ |1|2|3|4|5|6|
-|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-|**1**|(1,1)|(1,2)|(1,3)|(1,4)|(1,5)|**(1,6)**|
-|**2**|(2,1)|(2,2)|(2,3)|(2,4)|**(2,5)**|(2,6)|
-|**3**|(3,1)|(3,2)|(3,3)|**(3,4)**|(3,5)|(3,6)|
-|**4**|(4,1)|(4,2)|**(4,3)**|(4,4)|(4,5)|(4,6)|
-|**5**|(5,1)|**(5,2)**|(5,3)|(5,4)|(5,5)|(5,6)|
-|**6**|**(6,1)**|(6,2)|(6,3)|(6,4)|(6,5)|(6,6)|
+<p>The fourth and fifth examples each contain an infinite number of elements however there is a key difference between them. The fourth example only contains natural numbers (<script type="math/tex" id="MathJax-Element-18607">\mathbb{N}</script>) so it is <em>countably infinite</em>, and has the property that it is <em>countable</em>. The fifth example contains real numbers (<script type="math/tex" id="MathJax-Element-18608">\mathbb{R}</script>) so it is <em>uncountably infinite</em>, and has the property that it is <em>uncountable</em>. This makes sense intuitively. You cannot for example count all the digits up to <script type="math/tex" id="MathJax-Element-18609">\pi</script>. A sample space that is <em>finite</em> or <em>countable</em> is called <em>discrete</em>.</p>
 
-## Basic Set Operations
 
-Let S be our sample space, the set of all elements under consideration. Consider two events A and B which are subsets of S. We have the following three basic set operations.
 
-Union
-: The *Union* of $A$ and $B$ denoted $A \bigcup B$ is the set of all elements which are in $A$ or $B$ (or both).
+<h2 id="events-and-subsets">Events and subsets</h2>
 
-Intersection
-: The *Intersection* of $A$ and $B$ denoted $A \bigcap  B$ is the set of all elements which are in both $A$ and $B$.
+<dl>
+<dt>Subset</dt>
+<dd>A is a subset of B if every element in A is also contained in B. The sentence “A is a subset of S” is written A <script type="math/tex" id="MathJax-Element-18610">\subset</script> S.
 
-Disjoint (aka. Mutually Exclusive)
-: Two sets $A$ and $B$ are *Disjoint* or *Mutually Exclusive* if they have no elements in common, i.e. if $A \bigcap B = \emptyset$
+<blockquote>
+  <em>Example</em>: The set A = (1,2,3) is a subset of B = (1,2,3,4,5,6) however B is not a subset of A because the numbers (4,5,6) are not contained in A. <br>
+  In math terms this would be written  A <script type="math/tex" id="MathJax-Element-18611">\subset</script> B, B <script type="math/tex" id="MathJax-Element-18612">\not\subset</script> A. <br>
+  <em>Note</em> that the <em>direction</em> of the subset sign matters.
+</blockquote></dd>
 
-Complement
-: The *Complement* of $A$ denoted $A^c$ is the set of all points in $S$ which are not in $A$.
-> Note that $A$ and $A^c$ are disjoint and $A \bigcup A^c = S$
+<dt>Empty Set</dt>
+<dd>A set containing no elements, written <script type="math/tex" id="MathJax-Element-18613">\emptyset</script>.</dd>
 
-### Laws of Set Theory
+<dt>Event</dt>
+<dd>A subset of a sample space.
 
-1.  Distributive Laws
-	> $A \bigcap (B \bigcup C)  = (A \bigcap B) \bigcup (A \bigcap C)$
-	> $A \bigcup (B \bigcap C) = (A \bigcup B) \bigcap (A \bigcup B)$
-	
-2.  DeMorgan's Laws
-> $(A \bigcap B)^c = A^c \bigcup B^c$
-> $(A \bigcup B)^c = A^c \bigcap B^c$
+<blockquote>
+  <em>Example</em>: Consider the set S = {1, 2, 3, 4, 5, 6} representing the rolls of a single die. The following are possible events. <br>
+  1. A = {2, 4, 6}, the event that an even number is rolled <br>
+  2. B = {1, 2, 3}, the event that the roll is less than or equal to 3 <br>
+  3. C = {1}, the event that a 1 is rolled
+</blockquote></dd>
+</dl>
 
-## The Axiomatic Definition of Probability
-With this simple understanding of set theory, we can define the probability axiomatically as follows. Given any event $A$ in our sample space $S$, we assign a probability $\mathbb{P}(A)$ to that event such that the following rules hold:
+<p>The event C consists of a single element from the sample space. An event which consists of a single element is called a <em>simple event</em>. The events A and B are each composed of three simple events. </p>
 
-1. $0 \le \mathbb{P}(A) \le 1$
+<p>Now consider a sample space representing rolls of two dice. Let E be the event that the sum of the two dice is 7. We can represent this event graphically using a table where the first row represents the outcome of the first roll and the first column represents the outcome of the second roll. The event E consists of the rolls which are bolded. </p>
 
-- The probability of an event is a real number between 0 and 1, where a probability of 0 means that the event will never occur, and a probability of 1 means that the event will always occur.
+<table>
+<thead>
+<tr>
+  <th align="center">_</th>
+  <th align="center">1</th>
+  <th align="center">2</th>
+  <th align="center">3</th>
+  <th align="center">4</th>
+  <th align="center">5</th>
+  <th align="center">6</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="center"><strong>1</strong></td>
+  <td align="center">(1,1)</td>
+  <td align="center">(1,2)</td>
+  <td align="center">(1,3)</td>
+  <td align="center">(1,4)</td>
+  <td align="center">(1,5)</td>
+  <td align="center"><strong>(1,6)</strong></td>
+</tr>
+<tr>
+  <td align="center"><strong>2</strong></td>
+  <td align="center">(2,1)</td>
+  <td align="center">(2,2)</td>
+  <td align="center">(2,3)</td>
+  <td align="center">(2,4)</td>
+  <td align="center"><strong>(2,5)</strong></td>
+  <td align="center">(2,6)</td>
+</tr>
+<tr>
+  <td align="center"><strong>3</strong></td>
+  <td align="center">(3,1)</td>
+  <td align="center">(3,2)</td>
+  <td align="center">(3,3)</td>
+  <td align="center"><strong>(3,4)</strong></td>
+  <td align="center">(3,5)</td>
+  <td align="center">(3,6)</td>
+</tr>
+<tr>
+  <td align="center"><strong>4</strong></td>
+  <td align="center">(4,1)</td>
+  <td align="center">(4,2)</td>
+  <td align="center"><strong>(4,3)</strong></td>
+  <td align="center">(4,4)</td>
+  <td align="center">(4,5)</td>
+  <td align="center">(4,6)</td>
+</tr>
+<tr>
+  <td align="center"><strong>5</strong></td>
+  <td align="center">(5,1)</td>
+  <td align="center"><strong>(5,2)</strong></td>
+  <td align="center">(5,3)</td>
+  <td align="center">(5,4)</td>
+  <td align="center">(5,5)</td>
+  <td align="center">(5,6)</td>
+</tr>
+<tr>
+  <td align="center"><strong>6</strong></td>
+  <td align="center"><strong>(6,1)</strong></td>
+  <td align="center">(6,2)</td>
+  <td align="center">(6,3)</td>
+  <td align="center">(6,4)</td>
+  <td align="center">(6,5)</td>
+  <td align="center">(6,6)</td>
+</tr>
+</tbody></table>
 
-2. $\mathbb{P}(\emptyset) = 0$
 
-- The probability of nothing happening must be zero. In simple terms, if we are observing events, then something must happen.
 
-3.  $\mathbb{P}(S) = 1$
 
-- The probability that something from the sample space will occur is 1. 
->*Note*: The sample space is defined as *The set of all outcomes for a single experiment*
+<h2 id="basic-set-operations">Basic Set Operations</h2>
 
-4.  $\text{If } A \subset B \text{ then } \mathbb{P}(A) \le \mathbb{P}(B)$
+<p>Let S be our sample space, the set of all elements under consideration. Consider two events A and B which are subsets of S. We have the following three basic set operations.</p>
 
-- If we make a set bigger than its probability can only increase or stay the same, it cannot decrease.
+<dl>
+<dt>Union</dt>
+<dd>The <em>Union</em> of <script type="math/tex" id="MathJax-Element-18614">A</script> and <script type="math/tex" id="MathJax-Element-18615">B</script> denoted <script type="math/tex" id="MathJax-Element-18616">A \bigcup B</script> is the set of all elements which are in <script type="math/tex" id="MathJax-Element-18617">A</script> or <script type="math/tex" id="MathJax-Element-18618">B</script> (or both).</dd>
 
-5.  $\text{If } A_1, A_2, ..., A_n \text{ are pairwise disjoint events, then}$
-$$
+<dt>Intersection</dt>
+<dd>The <em>Intersection</em> of <script type="math/tex" id="MathJax-Element-18619">A</script> and <script type="math/tex" id="MathJax-Element-18620">B</script> denoted <script type="math/tex" id="MathJax-Element-18621">A \bigcap  B</script> is the set of all elements which are in both <script type="math/tex" id="MathJax-Element-18622">A</script> and <script type="math/tex" id="MathJax-Element-18623">B</script>.</dd>
+
+<dt>Disjoint (aka. Mutually Exclusive)</dt>
+<dd>Two sets <script type="math/tex" id="MathJax-Element-18624">A</script> and <script type="math/tex" id="MathJax-Element-18625">B</script> are <em>Disjoint</em> or <em>Mutually Exclusive</em> if they have no elements in common, i.e. if <script type="math/tex" id="MathJax-Element-18626">A \bigcap B = \emptyset</script></dd>
+
+<dt>Complement</dt>
+<dd>The <em>Complement</em> of <script type="math/tex" id="MathJax-Element-18627">A</script> denoted <script type="math/tex" id="MathJax-Element-18628">A^c</script> is the set of all points in <script type="math/tex" id="MathJax-Element-18629">S</script> which are not in <script type="math/tex" id="MathJax-Element-18630">A</script>.
+
+<blockquote>
+  Note that <script type="math/tex" id="MathJax-Element-18631">A</script> and <script type="math/tex" id="MathJax-Element-18632">A^c</script> are disjoint and <script type="math/tex" id="MathJax-Element-18633">A \bigcup A^c = S</script>
+</blockquote></dd>
+</dl>
+
+
+
+<h3 id="laws-of-set-theory">Laws of Set Theory</h3>
+
+<ol>
+<li><p>Distributive Laws</p>
+
+<blockquote>
+  <p><script type="math/tex" id="MathJax-Element-18634">A \bigcap (B \bigcup C)  = (A \bigcap B) \bigcup (A \bigcap C)</script> <br>
+  <script type="math/tex" id="MathJax-Element-18635">A \bigcup (B \bigcap C) = (A \bigcup B) \bigcap (A \bigcup B)</script></p>
+</blockquote></li>
+<li><p>DeMorgan’s Laws</p>
+
+<blockquote>
+  <p><script type="math/tex" id="MathJax-Element-18636">(A \bigcap B)^c = A^c \bigcup B^c</script> <br>
+  <script type="math/tex" id="MathJax-Element-18637">(A \bigcup B)^c = A^c \bigcap B^c</script></p>
+</blockquote></li>
+</ol>
+
+
+
+<h2 id="the-axiomatic-definition-of-probability">The Axiomatic Definition of Probability</h2>
+
+<p>With this simple understanding of set theory, we can define the probability axiomatically as follows. Given any event <script type="math/tex" id="MathJax-Element-18638">A</script> in our sample space <script type="math/tex" id="MathJax-Element-18639">S</script>, we assign a probability <script type="math/tex" id="MathJax-Element-18640">\mathbb{P}(A)</script> to that event such that the following rules hold:</p>
+
+<ol>
+<li><p><script type="math/tex" id="MathJax-Element-18641">0 \le \mathbb{P}(A) \le 1</script></p>
+
+<ul><li>The probability of an event is a real number between 0 and 1, where a probability of 0 means that the event will never occur, and a probability of 1 means that the event will always occur.</li></ul></li>
+<li><p><script type="math/tex" id="MathJax-Element-18642">\mathbb{P}(\emptyset) = 0</script></p>
+
+<ul><li>The probability of nothing happening must be zero. In simple terms, if we are observing events, then something must happen.</li></ul></li>
+<li><p><script type="math/tex" id="MathJax-Element-18643">\mathbb{P}(S) = 1</script></p>
+
+<p></p><ul><li>The probability that something from the sample space will occur is 1.  <br></li></ul><p></p>
+
+<blockquote>
+  <p><em>Note</em>: The sample space is defined as <em>The set of all outcomes for a single experiment</em></p></blockquote></li>
+
+<li><p><script type="math/tex" id="MathJax-Element-18644">\text{If } A \subset B \text{ then } \mathbb{P}(A) \le \mathbb{P}(B)</script></p>
+
+<ul><li>If we make a set bigger than its probability can only increase or stay the same, it cannot decrease.</li></ul></li>
+<li><p><script type="math/tex" id="MathJax-Element-18645">\text{If } A_1, A_2, ..., A_n \text{ are pairwise disjoint events, then}</script> <br>
+<script type="math/tex; mode=display" id="MathJax-Element-18646">
 \mathbb{P}(A_1 \bigcup A_2 \bigcup A_3 \bigcup ...) = \sum_{i=1}^\infty \mathbb{P}(A_i)
-$$
->*Note*: pairwise disjoint means that $A_i \bigcap A_j = \emptyset \text{ if } i \not= j$
+</script></p>
+
+<blockquote>
+  <p><em>Note</em>: pairwise disjoint means that <script type="math/tex" id="MathJax-Element-18647">A_i \bigcap A_j = \emptyset \text{ if } i \not= j</script></p>
+</blockquote></li>
+</ol>
 
 <!-- markdown list issue here need comment to solve ambiguity-->
- 
-- We said earlier that $A$ and $A^c$ are disjoint and $A \bigcup A^c = S$.
-- We know from rule 3 that $\mathbb{P}(S) = 1$
-- Thus based on rule 5 for pairwise disjoint events we can write that:
-$$
+
+<ul>
+<li>We said earlier that <script type="math/tex" id="MathJax-Element-18648">A</script> and <script type="math/tex" id="MathJax-Element-18649">A^c</script> are disjoint and <script type="math/tex" id="MathJax-Element-18650">A \bigcup A^c = S</script>.</li>
+<li>We know from rule 3 that <script type="math/tex" id="MathJax-Element-18651">\mathbb{P}(S) = 1</script></li>
+<li><p>Thus based on rule 5 for pairwise disjoint events we can write that: <br>
+<script type="math/tex; mode=display" id="MathJax-Element-18652">
 \mathbb{P}(A) \bigcup \mathbb{P}(A^c) = \mathbb{P}(S) \\
 \mathbb{P}(A) + \mathbb{P}(A^c) = 1 \\
  \mathbb{P}(A) = 1 - \mathbb{P}(A^c) 
-$$
+</script></p></li>
+<li><p>Sometimes it is easier to take the probability of an event not happening than the probability of the event itself.</p></li>
+</ul>
 
-- Sometimes it is easier to take the probability of an event not happening than the probability of the event itself.
+<p>These rules tell us the properties that we want probability to have. However, given a sample space, they do not tell us how to assign probabilities to each event in the sample space. Given a discrete sample space, composed of a finite number of simple events, all we have to do is assign probabilities to each simple event in such a way that they add up to 1.</p>
 
-These rules tell us the properties that we want probability to have. However, given a sample space, they do not tell us how to assign probabilities to each event in the sample space. Given a discrete sample space, composed of a finite number of simple events, all we have to do is assign probabilities to each simple event in such a way that they add up to 1.
+<p><strong>Example</strong> <br>
+Consider the tossing of a single die. The sample space for this is <script type="math/tex" id="MathJax-Element-18653">S = \{1,2,3,4,5,6\}</script>. This sample space contains 6 simple events <script type="math/tex" id="MathJax-Element-18654">\{1\}</script>, <script type="math/tex" id="MathJax-Element-18655">\{2\}</script>, <script type="math/tex" id="MathJax-Element-18656">\{3\}</script>, <script type="math/tex" id="MathJax-Element-18657">\{4\}</script>, <script type="math/tex" id="MathJax-Element-18658">\{5\}</script>, <script type="math/tex" id="MathJax-Element-18659">\{6\}</script>. We can assign any probabilities we ant to these simple events, as long as they add up to 1. For example, assuming we have a fair die, we can let <script type="math/tex" id="MathJax-Element-18660">\mathbb{P}(\{i\}) = \frac{1}{6}</script> for <script type="math/tex" id="MathJax-Element-18661">i = 1, ..., 6</script>. If we like, we can check that all the above rules hold. If we have a loaded die, which rolls a 6, say, half the time, we could assign probabilities  <script type="math/tex" id="MathJax-Element-18662">\mathbb{P}(\{6\}) = \frac{1}{2}</script>, <script type="math/tex" id="MathJax-Element-18663">\mathbb{P}(\{i\}) = \frac{1}{10}</script> for <script type="math/tex" id="MathJax-Element-18664">i=1,...,5</script>.</p>
 
-**Example**
-Consider the tossing of a single die. The sample space for this is $S = \{1,2,3,4,5,6\}$. This sample space contains 6 simple events $\{1\}$, $\{2\}$, $\{3\}$, $\{4\}$, $\{5\}$, $\{6\}$. We can assign any probabilities we ant to these simple events, as long as they add up to 1. For example, assuming we have a fair die, we can let $\mathbb{P}(\{i\}) = \frac{1}{6}$ for $i = 1, ..., 6$. If we like, we can check that all the above rules hold. If we have a loaded die, which rolls a 6, say, half the time, we could assign probabilities  $\mathbb{P}(\{6\}) = \frac{1}{2}$, $\mathbb{P}(\{i\}) = \frac{1}{10}$ for $i=1,...,5$.
->*Note*: I find that the simplest way to solve a problem is to assign the "unfair" probabilities first. In this case that is  $\mathbb{P}(\{6\}) = \frac{1}{2}$. Because $\mathbb{P}(\{S\}) = 1$ we now have five events left which must share a total probability of $\frac{1}{2}$. Solve $\mathbb{P}(\{i\}) \text{ for } i=1,...,5 = {\frac{1}{2} \over 5} = \frac{1}{10}$
+<blockquote>
+  <p><em>Note</em>: I find that the simplest way to solve a problem is to assign the “unfair” probabilities first. In this case that is  <script type="math/tex" id="MathJax-Element-18665">\mathbb{P}(\{6\}) = \frac{1}{2}</script>. Because <script type="math/tex" id="MathJax-Element-18666">\mathbb{P}(\{S\}) = 1</script> we now have five events left which must share a total probability of <script type="math/tex" id="MathJax-Element-18667">\frac{1}{2}</script>. Solve <script type="math/tex" id="MathJax-Element-18668">\mathbb{P}(\{i\}) \text{ for } i=1,...,5 = {\frac{1}{2} \over 5} = \frac{1}{10}</script></p>
+</blockquote>
 
-**Example**
-Consider a countable sample space $S = \mathbb{N} = \{1,2,3,...\}$. One possibility is to assign probabilities $\mathbb{P}(\{i\}) = \frac{1}{2}^i$ for $i = 1,2,3,...,$. i.e. $\mathbb{P}(\{1\}) = \frac{1}{2}$, $\mathbb{P}(\{2\}) = \frac{1}{4}$, $\mathbb{P}(\{3\}) = \frac{1}{8}$, etc. Recall from calculus that this is a geometric series with first element $\frac{1}{2}$, and so we know its sum is:
-$$
+<p><strong>Example</strong> <br>
+Consider a countable sample space <script type="math/tex" id="MathJax-Element-18669">S = \mathbb{N} = \{1,2,3,...\}</script>. One possibility is to assign probabilities <script type="math/tex" id="MathJax-Element-18670">\mathbb{P}(\{i\}) = \frac{1}{2}^i</script> for <script type="math/tex" id="MathJax-Element-18671">i = 1,2,3,...,</script>. i.e. <script type="math/tex" id="MathJax-Element-18672">\mathbb{P}(\{1\}) = \frac{1}{2}</script>, <script type="math/tex" id="MathJax-Element-18673">\mathbb{P}(\{2\}) = \frac{1}{4}</script>, <script type="math/tex" id="MathJax-Element-18674">\mathbb{P}(\{3\}) = \frac{1}{8}</script>, etc. Recall from calculus that this is a geometric series with first element <script type="math/tex" id="MathJax-Element-18675">\frac{1}{2}</script>, and so we know its sum is: <br>
+<script type="math/tex; mode=display" id="MathJax-Element-18676">
 \sum_{i=1}^\infty \mathbb{P}(\{i\}) = \sum_{i=1}^\infty \frac{1}{2^i} = {\frac{1}{2} \over {1 - \frac{1}{2}}} = {\frac{1}{2} \over \frac{1}{2}}  =1
-$$
+</script></p>
 
-Since the sum of the probabilities of all the simple events is 1, we are all set. If you have not seen this before, we will cover this in more detail later on. For now it is enough if you are convinced that the sum is indeed 1.
+<p>Since the sum of the probabilities of all the simple events is 1, we are all set. If you have not seen this before, we will cover this in more detail later on. For now it is enough if you are convinced that the sum is indeed 1.</p>
 
->*Note*: The sum to infinity of a geometric series with initial value $a$ and ratio $r$ is ${a \over 1-r}$ if $-1 \lt r \lt 1$
-
-## Discrete Uniform Distribution
-
-The first probability distribution we will consider is the uniform distribution on a *finite* sample space. In the discrete uniform distribution, every simple event is equally likely to occur.
-Suppose we have a finite sample space $S$ with $n$ simple events. 
+<blockquote>
+  <p><em>Note</em>: The sum to infinity of a geometric series with initial value <script type="math/tex" id="MathJax-Element-18677">a</script> and ratio <script type="math/tex" id="MathJax-Element-18678">r</script> is <script type="math/tex" id="MathJax-Element-18679">{a \over 1-r}</script> if <script type="math/tex" id="MathJax-Element-18680">-1 \lt r \lt 1</script></p>
+</blockquote>
 
 
 
+<h2 id="discrete-uniform-distribution">Discrete Uniform Distribution</h2>
 
-	   
+<p>The first probability distribution we will consider is the uniform distribution on a <em>finite</em> sample space. In the discrete uniform distribution, every simple event is equally likely to occur. <br>
+Suppose we have a finite sample space <script type="math/tex" id="MathJax-Element-18681">S</script> with <script type="math/tex" id="MathJax-Element-18682">n</script> simple events. </p>
 
-
+<div class="footnotes"><hr><ol><li id="fn:footnote">As stated in Laplace’s Théorie analytique des probabilités (<a href="https://en.wikipedia.org/wiki/Classical_definition_of_probability">wiki</a>) <a href="#fnref:footnote" title="Return to article" class="reversefootnote">↩</a></li></ol></div>
