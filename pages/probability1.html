@@ -1,0 +1,234 @@
+
+
+
+> Written with [StackEdit](https://stackedit.io/).
+
+# Probability Essentials
+
+Subjective Probability
+:	A measure of a person's belief in the occurrence of an event.
+>For example if a meteorologist says "There is a 60% probability of rain tomorrow"
+
+Lets look at an example in order to derive a more concrete notion of probability. 
+####What is the probability of rolling a 1 on a standard six sided die? 
+
+Based on symmetry and the fact that dice are cubical, we can assume all sides of the face are equally likely to be rolled. There are six faces, so the probability of rolling any one of those faces is 1/6. This is the *classical* notion of probability, first defined by Laplace.
+
+Classical Probability
+: Probability ... is thus simply a fraction whose numerator is the number of favorable cases and whose denominator is the number of all the cases possible ... when nothing leads us to expect that any one of these cases should occur more than any other.[^footnote].
+>*Key Point*: Notice the line "nothing leads us to expect that any one of these cases should occur more than any other. In other words **classical probability assumes that the likelihood of all events must be equal.**
+> *Example*:  If you flip a fair coin 3 times what are the odds of getting 2 heads?
+	> We want to find the fraction $\frac{\text{favorable cases}}{\text{all possible cases}}$. There are 8 possible cases so the denominator is 8 (HHH, HHT, HTH, THH, TTH, THT, HTT, TTT). There are 3 favorable cases (TTH, THT, HTT) so the numerator is 3. The odds of getting 2 heads in 3 flips of a fair coin are $\frac{3}{8}$.
+
+
+[^footnote]: As stated in Laplace's Théorie analytique des probabilités ([wiki](https://en.wikipedia.org/wiki/Classical_definition_of_probability))
+
+The downside of this definition is that it requires events to be equiprobable. It works well for coin flips, and die rolls, but not for more complicated scenarios.
+
+Another way of looking at the die roll experiment is to image rolling a standard six-sided die repeatedly. The empirical probability of rolling a 1 is the ratio of the number of times a 1 is rolled to the total number of rolls. In general this can be described as 
+
+$$
+\text{empirical probability of a certain event}= \frac{\text{number of times event occurs}}{\text{total number of trials}}
+$$
+
+Intuitively as we perform more dice rolls, the empirical probability of rolling a 1 should approach some mythical quantity which we call the true probability of rolling a 1. This is the *empirical* or *frequentist* approach to probability.
+
+Empirical Probability
+: The empirical probability, relative frequency, or experimental probability of an event is the ratio of the number of outcomes in which a specified event occurs to the total number of trials
+>In a more general sense, **empirical probability estimates probabilities from experience and observation**
+
+For a standard six sided die,  it makes sense that the empirical probability should approach the classical probability of $\frac{1}{6}$. The main advantage of the empirical approach over the classical approach is that we do not require symmetry to compute probabilities. As a simple example of this, think about how you would determine the probability of rolling a 1 if someone handed you a loaded die. With the classical approach, you are out of luck, since you don't know the die is loaded. In the empirical approach, you would simply roll the die repeatedly, counting the number of times each number is rolled. Then the probability of any number is given by the equation.
+$$
+P(X) = \frac{\text{number of times X was rolled}}{\text{total number of rolls}}
+$$
+The downside of the empirical approach is that it requires experiments to be performed, which is not always possible. Just imagine if you were asked to calculate the probability that a nuclear reactor does not fail? We can't perform repeated tests of this type of thing. Because of that, we will focus on *axiomatic probability* which is based on *set theory*.
+
+## Sample Spaces
+Set
+: A collection of distinct objects
+> {cat, dog, mouse} is a valid set because no objects are repeated.
+> {1, 1, 3} is an invalid set because it contains the number 1 twice.
+
+Sample Space
+: The set of all outcomes for a single experiment
+>Examples
+1. A single coin flip S = {H, T}
+2. Roll of a standard, six sided die S = {1,2,3,4,5,6}
+3. Roll of two standard six sided dice. The table below. 
+4. Number of free throw attempts it takes to make a single basket S = {1,2,3, ...}. Often denoted $\mathbb{N}$
+5. Amount of rain that falls in a week S = [0, $\infty$]
+|_ |1|2|3|4|5|6|
+|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+|**1**|(1,1)|(1,2)|(1,3)|(1,4)|(1,5)|(1,6)|
+|**2**|(2,1)|(2,2)|(2,3)|(2,4)|(2,5)|(2,6)|
+|**3**|(3,1)|(3,2)|(3,3)|(3,4)|(3,5)|(3,6)|
+|**4**|(4,1)|(4,2)|(4,3)|(4,4)|(4,5)|(4,6)|
+|**5**|(5,1)|(5,2)|(5,3)|(5,4)|(5,5)|(5,6)|
+|**6**|(6,1)|(6,2)|(6,3)|(6,4)|(6,5)|(6,6)|
+
+Note that the first three sample spaces contain only a finite number of elements (2,6, 36 respectively). These are *finite sample spaces*.
+
+The fourth and fifth examples each contain an infinite number of elements however there is a key difference between them. The fourth example only contains natural numbers ($\mathbb{N}$) so it is *countably infinite*, and has the property that it is *countable*. The fifth example contains real numbers ($\mathbb{R}$) so it is *uncountably infinite*, and has the property that it is *uncountable*. This makes sense intuitively. You cannot for example count all the digits up to $\pi$. A sample space that is *finite* or *countable* is called *discrete*.
+
+## Events and subsets
+
+Subset
+: A is a subset of B if every element in A is also contained in B. The sentence "A is a subset of S" is written A $\subset$ S.
+> *Example*: The set A = (1,2,3) is a subset of B = (1,2,3,4,5,6) however B is not a subset of A because the numbers (4,5,6) are not contained in A.
+> In math terms this would be written  A $\subset$ B, B $\not\subset$ A.
+> *Note* that the *direction* of the subset sign matters.
+
+Empty Set
+: A set containing no elements, written $\emptyset$.
+
+Event
+: A subset of a sample space.
+> *Example*: Consider the set S = {1, 2, 3, 4, 5, 6} representing the rolls of a single die. The following are possible events.
+> 1. A = {2, 4, 6}, the event that an even number is rolled
+> 2. B = {1, 2, 3}, the event that the roll is less than or equal to 3
+> 3. C = {1}, the event that a 1 is rolled
+
+The event C consists of a single element from the sample space. An event which consists of a single element is called a *simple event*. The events A and B are each composed of three simple events. 
+
+Now consider a sample space representing rolls of two dice. Let E be the event that the sum of the two dice is 7. We can represent this event graphically using a table where the first row represents the outcome of the first roll and the first column represents the outcome of the second roll. The event E consists of the rolls which are bolded. 
+
+|_ |1|2|3|4|5|6|
+|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+|**1**|(1,1)|(1,2)|(1,3)|(1,4)|(1,5)|**(1,6)**|
+|**2**|(2,1)|(2,2)|(2,3)|(2,4)|**(2,5)**|(2,6)|
+|**3**|(3,1)|(3,2)|(3,3)|**(3,4)**|(3,5)|(3,6)|
+|**4**|(4,1)|(4,2)|**(4,3)**|(4,4)|(4,5)|(4,6)|
+|**5**|(5,1)|**(5,2)**|(5,3)|(5,4)|(5,5)|(5,6)|
+|**6**|**(6,1)**|(6,2)|(6,3)|(6,4)|(6,5)|(6,6)|
+
+## Basic Set Operations
+
+Let S be our sample space, the set of all elements under consideration. Consider two events A and B which are subsets of S. We have the following three basic set operations.
+
+Union
+: The *Union* of $A$ and $B$ denoted $A \bigcup B$ is the set of all elements which are in $A$ or $B$ (or both).
+
+Intersection
+: The *Intersection* of $A$ and $B$ denoted $A \bigcap  B$ is the set of all elements which are in both $A$ and $B$.
+
+Disjoint (aka. Mutually Exclusive)
+: Two sets $A$ and $B$ are *Disjoint* or *Mutually Exclusive* if they have no elements in common, i.e. if $A \bigcap B = \emptyset$
+
+Complement
+: The *Complement* of $A$ denoted $A^c$ is the set of all points in $S$ which are not in $A$.
+> Note that $A$ and $A^c$ are disjoint and $A \bigcup A^c = S$
+
+### Laws of Set Theory
+
+1.  Distributive Laws
+	> $A \bigcap (B \bigcup C)  = (A \bigcap B) \bigcup (A \bigcap C)$
+	> $A \bigcup (B \bigcap C) = (A \bigcup B) \bigcap (A \bigcup B)$
+	
+2.  DeMorgan's Laws
+> $(A \bigcap B)^c = A^c \bigcup B^c$
+> $(A \bigcup B)^c = A^c \bigcap B^c$
+
+## The Axiomatic Definition of Probability
+With this simple understanding of set theory, we can define the probability axiomatically as follows. Given any event $A$ in our sample space $S$, we assign a probability $\mathbb{P}(A)$ to that event such that the following rules hold:
+
+1. $0 \le \mathbb{P}(A) \le 1$
+
+- The probability of an event is a real number between 0 and 1, where a probability of 0 means that the event will never occur, and a probability of 1 means that the event will always occur.
+
+2. $\mathbb{P}(\emptyset) = 0$
+
+- The probability of nothing happening must be zero. In simple terms, if we are observing events, then something must happen.
+
+3.  $\mathbb{P}(S) = 1$
+
+- The probability that something from the sample space will occur is 1. 
+>*Note*: The sample space is defined as *The set of all outcomes for a single experiment*
+
+4.  $\text{If } A \subset B \text{ then } \mathbb{P}(A) \le \mathbb{P}(B)$
+
+- If we make a set bigger than its probability can only increase or stay the same, it cannot decrease.
+
+5.  $\text{If } A_1, A_2, ..., A_n \text{ are pairwise disjoint events, then}$
+$$
+\mathbb{P}(A_1 \bigcup A_2 \bigcup A_3 \bigcup ...) = \sum_{i=1}^\infty \mathbb{P}(A_i)
+$$
+>*Note*: pairwise disjoint means that $A_i \bigcap A_j = \emptyset \text{ if } i \not= j$
+
+<!-- markdown list issue here need comment to solve ambiguity-->
+ 
+- We said earlier that $A$ and $A^c$ are disjoint and $A \bigcup A^c = S$.
+- We know from rule 3 that $\mathbb{P}(S) = 1$
+- Thus based on rule 5 for pairwise disjoint events we can write that:
+$$
+\mathbb{P}(A) \bigcup \mathbb{P}(A^c) = \mathbb{P}(S) \\
+\mathbb{P}(A) + \mathbb{P}(A^c) = 1 \\
+ \mathbb{P}(A) = 1 - \mathbb{P}(A^c) 
+$$
+
+- Sometimes it is easier to take the probability of an event not happening than the probability of the event itself.
+
+These rules tell us the properties that we want probability to have. However, given a sample space, they do not tell us how to assign probabilities to each event in the sample space. Given a discrete sample space, composed of a finite number of simple events, all we have to do is assign probabilities to each simple event in such a way that they add up to 1.
+
+**Example**
+Consider the tossing of a single die. The sample space for this is $S = \{1,2,3,4,5,6\}$. This sample space contains 6 simple events $\{1\}$, $\{2\}$, $\{3\}$, $\{4\}$, $\{5\}$, $\{6\}$. We can assign any probabilities we ant to these simple events, as long as they add up to 1. For example, assuming we have a fair die, we can let $\mathbb{P}(\{i\}) = \frac{1}{6}$ for $i = 1, ..., 6$. If we like, we can check that all the above rules hold. If we have a loaded die, which rolls a 6, say, half the time, we could assign probabilities  $\mathbb{P}(\{6\}) = \frac{1}{2}$, $\mathbb{P}(\{i\}) = \frac{1}{10}$ for $i=1,...,5$.
+>*Note*: I find that the simplest way to solve a problem is to assign the "unfair" probabilities first. In this case that is  $\mathbb{P}(\{6\}) = \frac{1}{2}$. Because $\mathbb{P}(\{S\}) = 1$ we now have five events left which must share a total probability of $\frac{1}{2}$. Solve $\mathbb{P}(\{i\}) \text{ for } i=1,...,5 = {\frac{1}{2} \over 5} = \frac{1}{10}$
+
+**Example**
+Consider a countable sample space $S = \mathbb{N} = \{1,2,3,...\}$. One possibility is to assign probabilities $\mathbb{P}(\{i\}) = \frac{1}{2}^i$ for $i = 1,2,3,...,$. i.e. $\mathbb{P}(\{1\}) = \frac{1}{2}$, $\mathbb{P}(\{2\}) = \frac{1}{4}$, $\mathbb{P}(\{3\}) = \frac{1}{8}$, etc. Recall from calculus that this is a geometric series with first element $\frac{1}{2}$, and so we know its sum is:
+$$
+\sum_{i=1}^\infty \mathbb{P}(\{i\}) = \sum_{i=1}^\infty \frac{1}{2^i} = {\frac{1}{2} \over {1 - \frac{1}{2}}} = {\frac{1}{2} \over \frac{1}{2}}  =1
+$$
+
+Since the sum of the probabilities of all the simple events is 1, we are all set. If you have not seen this before, we will cover this in more detail later on. For now it is enough if you are convinced that the sum is indeed 1.
+
+>*Note*: The sum to infinity of a geometric series with initial value $a$ and ratio $r$ is ${a \over 1-r}$ if $-1 \lt r \lt 1$
+
+## Discrete Uniform Distribution
+
+The first probability distribution we will consider is the uniform distribution on a *finite* sample space. In the discrete uniform distribution, every simple event is equally likely to occur.
+Suppose we have a finite sample space $S$ with $n$ simple events. The discret uniform distribution assigns each simple event a probability of $\frac{1}{n}$. Why is this the case? If each simple event has probability $p$ and there are $n$ simple events $A_1, ... A_n$, in our sample space, then using the fact that the sample space $S$ must have probability 1 and that the simple events are pairwise disjoint:
+$$
+1 = \mathbb{P}(S) \\
+= \mathbb{P}(A_1 \bigcup A_2 \bigcup  ... \bigcup A_n) \\
+= \mathbb{P}(A_1) + \mathbb{P}(A_2) + ... + \mathbb{P}(A_n) \\
+= np
+$$
+
+In the last line we use the fact that each simple event has the probability $p$ and that there are $n$ of them. Solving for $p$ we get $p = \frac{1}{n}$.
+
+How do we find the probability of an event that is not a simple event? Again, consider a discrete sample space $S$ with $n$ simple events. Suppose we have an event $A$ which is a subset of $S$. Since we have a finite sample sapce, $A$ is composed of a finite number $m$ of simple events, where $m$ is an integer between 0 and $n$. The probability of $A$ is:
+
+$$
+\mathbb{P}(A) = {\text{number of simple events in } A \over \text{number of simple events in } S} = {m \over n}
+$$
+
+**Example**
+Consider the finite sample space $S$ representing the roll of two standard dice. This sample space has 36 simple events, so each simple event has probability ${1 \over 36}$. 
+
+1. What is the probability that the sum of the two dice is 7?
+
+If we look at the graphical depication of this event above, we see that there are 6 simple events that give us the sum of 7. Thus the probability of a sum of 7 is 
+$$
+{\text{number of simple event in subset} \over \text{number of simple events in sample space}} = {7 \over 36}
+$$ 
+
+2. What is the probability that the sum of two dice is less than 11?
+
+In this case it is easier to compute the probability that the sum is 11 or greater and then substract the probability from 1. Let $A$ be the event that the sum is 11 or greater. $A$ is composed of 3 simple events: $(6,6), (6,5)$ and $(5,6)$. Thus we have $\mathbb{P}(A) = {3 \over 36}$. The probability we want is the complement of this, or the event that the sum is less than 11, $A^c$.
+$$
+\mathbb{P}(A^c) = 1 - \mathbb{P}(A) = 1 - {3 \over 36} = {33 \over 36}
+$$
+
+> *Note*: For simple events in this sample space, the order of the die roll matters. $(1,6)$ and $(6, 1)$ are two different events, even though both events contain the same die rolls. However ${1,1}$ and ${1,1}$ are not counted as two different events. A simple way to see that this is true is to look at the table of die rolls from earlier. Notice that $(1,6)$ and $(6, 1)$ count for two die rolls while ${1,1}$ only accounts for one.
+
+In the previous example, it is relatively straightforward to draw the sample space, so we can compute basically any probability we want by looking at the picture and counting the number of boxes which are contained in the event of interest. For more complicated problems however, this method does not work. Consider the following example.
+
+**Example**
+A communication system consists of $n$ antennas arranged in a line. Exactly $m$ out of the $n$ antennas are defective. The system is function if no two consecutive antennae are defective. Assuming that each linear arrangement of the antennas is equally likely, what is the probability that the system will be functional?
+
+
+
+
+	   
+
+
