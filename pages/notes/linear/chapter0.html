@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 0</title>
+  <link rel="stylesheet" href="http://app.classeur.io/base-min.css" />
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+
+<body>
+  <div class="export-container"><h1 id="chapter-0">Chapter 0</h1>
+<h2 id="the-function">The Function</h2>
+<h3 id="set-terminology-and-notation">Set Terminology and Notation</h3>
+<dl>
+<dt><strong>set</strong></dt>
+<dd>is a collection of mathematical objects in which each 	object is consider to occur at most once.</dd>
+<dt><strong>elements</strong></dt>
+<dd>the objects belonging to a set</dd>
+<dt><strong>cardinality</strong></dt>
+<dd>The number of elements in a finite set. We cannot denote the cardinality of an infinite set.</dd>
+<dt><strong>(\(S_1 \subset S_2\))</strong></dt>
+<dd>All of the elements of \(S_1\) appear in \(S_2\). But the elements of \(S_2\) are not necessarily all found in \(S_1\).</dd>
+<dt><strong>(\(S_1 \subseteq S_2\))</strong></dt>
+<dd>All of the elements of \(S_1\) appear in \(S_2\) and all of the elements of \(S_2\) appear in \(S_1\). The two sets are said to be equal.</dd>
+</dl>
+<p>A <em>set</em> is a collection of objects in which each object is considered to occur at most once. The objects belonging to a set are its <em>elements</em>. We use curly braces \(\{1, 2, 3, 4\}\) to indicate a set. The order in which the elements are listed is not significant. The symbol \(\in\) is used to indicate that an object belongs to a set.</p>
+<p>One set \(S_1\) is <em>contained in</em> another set \(S_2\) written (\(S_1 \subset S_2\)) if every element of \(S_1\) belongs to \(S_2\). Two sets are equal if they contain exactly the same elements.</p>
+<p>A set can be infinite. If a set if not infinite we use \(|S|\) to denote it’s <em>cardinality</em>, the number of elements it contains. For example the set of suits in a card deck has cardinality 4.</p>
+<h3 id="cartesian-product">Cartesian product</h3>
+<p>The *Cartesian production of two sets \(A\) and \(B\) is the set of all pairs \((a,b)\) where \(a \in A\) and \(b \in B\).</p>
+<p>For finite sets \(A\) and \(B\) the cardinality of the Cartesian product of \(A\) and \(B\) (written \(|A \times B|\) ) is \(|A| \cdot |B|\).</p>
+<p>###The Function</p>
+<dl>
+<dt><strong>function</strong></dt>
+<dd>(<em>informal</em>) a rule that for each element in some set \(D\) of possible inputs assigns a possible output.</dd>
+<dd>(<em>formal</em>) a (possibly infinite) set of pairs \((a, b)\) no two of which share the same first entry.
+<blockquote>
+<p>Example<br>
+	The double function with domain \(\{1,2,3,...\}\) is<br>
+	\[\{(1,2), (2,4), (3,6), ...\}\]</p>
+</blockquote>
+</dd>
+<dt><strong>image</strong></dt>
+<dd>The output is said to be the image of the input under the function.</dd>
+<dd>The <em>image</em> of a function \(F\) is the set of images of all domain elements. That is, the image of \(f\) is the set of elements of the co-domain that actually occur as outputs. For example the image of the cosine function is the set of real numbers between 1 and -1.</dd>
+<dt><strong>pre-image</strong></dt>
+<dd>The input is a <em>pre-image</em> of the output.</dd>
+<dt><strong>domain</strong></dt>
+<dd>The set \(D\) of possible inputs is called the <em>domain</em> of the function.</dd>
+<dt><strong>maps to</strong></dt>
+<dd>For a function named \(f\) the image of \(q\) under \(f\) is denoted by \(f(q)\). If \(r = f(q)\) we say that <em>\(q\) maps to \(r\) under \(f\)</em>. The notation for “q maps to r” is \(q \mapsto r\).</dd>
+<dt><strong>co-domain</strong></dt>
+<dd>The co-domain is a set from which the function’s output values are chosen. Note that one has some leeway in choosing the co-domain since not all of its members need to be outputs. The notation \(f : D \mapsto F\) means that \(f\) is a function whose domain is the set \(D\) and whose \(co-domain\) (the set of all possible outputs is the set \(F\). (Succinctly, a function that maps \(D\) to \(F\)).</dd>
+</dl>
+<h4 id="functions-vs.-procedures-vs.-computational-problems">Functions vs. Procedures vs. Computational Problems</h4>
+<dl>
+<dt><strong>Procedure</strong></dt>
+<dd>A precise description of a computation. It accepts <em>inputs</em> (called <em>arguments</em>) and produces an output (called the <em>return value</em>).</dd>
+<dt><strong>Computation problem</strong></dt>
+<dd>An input-output specification that a procedure might be required to satisfy.</dd>
+</dl>
+<blockquote>
+<p><em>Example</em></p>
+<ul>
+<li><em>input</em>: a pair (p,q) of integers greater than 1</li>
+<li><em>output</em>: the product <em>pq</em></li>
+</ul>
+</blockquote>
+<ul>
+<li>How is a computational problem different from a procedure?
+<ul>
+<li>A procedure is basically a specific implementation used to solve a computational problem. One computational problem is integer multiplication. There are many different procedures you could use to solve this problem, some better than others.</li>
+<li>Unlike a function a computation problem need not specify a unique output for every input.</li>
+</ul>
+</li>
+</ul>
+<h4 id="the-two-computational-problems-related-to-a-function">The two computational problems related to a function</h4>
+<dl>
+<dt><strong>The forward problem</strong></dt>
+<dd>Given an element \(a\) of \(f\)'s domain, compute \(f(a)\) the image of \(a\) under \(f\).</dd>
+<dt><strong>The backward problem</strong></dt>
+<dd>Given an element \(r\) of the co-domain of the function, compute any pre-image (or report that none exists).</dd>
+</dl>
+<ul>
+<li>Solving the backwards problem
+<ul>
+<li>The only universal way to figure out which input yielded a certain output is to iterate through all the inputs, figuring out what each input maps to, and then stopping when you reach the desired output. This is not fast.</li>
+</ul>
+</li>
+</ul>
+<dl>
+<dt><em>With great generality comes great computational difficulty</em></dt>
+<dd>By limiting ourselves to a specific family of functions, in our case <em>linear functions</em> we reduce the generality and therefore the computational difficulty, and can solve the backward problem.</dd>
+</dl>
+<h4 id="notation-for-the-set-of-functions-with-given-domain-and-co-domain">Notation for the set of functions with given domain and co-domain</h4>
+<dl>
+<dt><strong>\(F^D\)</strong></dt>
+<dd>all the functions from \(D\) to \(F\).</dd>
+<dd>For any finite sets \(D\) and \(F\),  \(|D^F| = |D|^{|F|}\)</dd>
+</dl>
+<p>####Identity Function</p>
+<dl>
+<dt><strong>Identity Function</strong></dt>
+<dd>For any domain \(D\) there is a function \(id_D : D \mapsto D\), defined \(id_D(d) = d\)</dd>
+</dl>
+<h4 id="composition-of-functions">Composition of functions</h4>
+<dl>
+<dt><strong>Functional composition</strong></dt>
+<dd>An operation that combines two functions to get a new function. Given two functions \(F : A \mapsto B\) and \(g : B \mapsto C\) the function \(g \circ f\) is called the composition of \(g\) and \(f\). It is a function whose domain is \(A\) and whose co-domain is \(C\). It is defined by<br>
+\[(g \circ f)(x) = g(f(x))\]</dd>
+</dl>
+<p>If the image of \(f\) is not contained in the domain of \(g\) then \(g \circ f\) is not a legal expression.</p>
+<h4 id="associativity-of-function-composition">Associativity of function composition</h4>
+<dl>
+<dt><strong>Associativity of composition</strong></dt>
+<dd>For functions \(f, g, h\) \[h \circ (g \circ f) = (h \circ g) \circ f\] if the compositions are legal. This means that parentheses are unnecessary in function composition.</dd>
+</dl>
+<h3 id="functional-inverse">Functional Inverse</h3>
+<dl>
+<dt><strong>Functional Inverse</strong></dt>
+<dd>We say that functions \(f\) and \(g\) are <em>functional inverses</em> of each other if</dd>
+</dl>
+<ul>
+<li>\(f \circ g\) is defined and is the identity function on the domain of \(g\) and</li>
+<li>\(g \circ f\) is defined and is the identity function on the domain of \(f\)</li>
+</ul>
+<dl>
+<dt><strong>Invertible</strong></dt>
+<dd>Not every function has an inverse. A function that has an inverse is said to be invertible.</dd>
+<dt><strong>One-to-One</strong></dt>
+<dd>A function \(f\) is <em>one-to-one</em> if for every \(x, y \in D, f(x) = f(y) \implies x = y\)</dd>
+<dt><strong>Onto</strong></dt>
+<dd>a function \(f\) is <em>onto</em> if for every \(z \in F \, \exists \, x \in D | f(x) = z\)</dd>
+<dt><strong>Invertibility Theorem</strong></dt>
+<dd>A function is invertible if and only if it is one-to-one and onto.</dd>
+<dd>Every function has at most one functional inverse.</dd>
+</dl>
+<h4 id="invertibility-of-the-composition-of-invertible-functions">Invertibility of the composition of invertible functions</h4>
+<p>If \(f\) and \(g\) are invertible functions and \(f \circ g\) exists then \(f \circ g\) is invertible and \((f \circ g)^{-1} = g^{-1} \circ f^{-1}\)</p>
+<h3 id="probability">Probability</h3>
+<h4 id="uniform-distributions">Uniform Distributions</h4>
+<p>All outcomes are equally likely so they are all assigned the same probabilities.</p>
+<h4 id="nonuniform-distributions">Nonuniform distributions</h4>
+<p>All outcomes are not equally likely so they are assigned different probabilities.</p>
+<h4 id="events-and-adding-probabilities">Events and adding probabilities</h4>
+<dl>
+<dt><strong>Fundamental Principle of Probability Theory</strong></dt>
+<dd>The probability of an event is the sum of the probabilities of the outcomes which make up the event.</dd>
+</dl>
+<h4 id="applying-a-function-to-a-random-input">Applying a function to a random input</h4>
+<p>Given a set of random inputs \(\{1,2,3,4,5,6\}\) for example. Count how many of the inputs yield a certain output. Use the sum to define the probability.</p>
+<p>If a function is invertible the probabilities are preserved. The probabilities of various outputs match the probabilities of the inputs. Thus if the inputs are chosen uniformly at random, then the outputs will be uniformly random.</p>
+<h4 id="perfect-secrecy">Perfect Secrecy</h4>
+<p>A cryptosystem has to satisfy two requirements</p>
+<ul>
+<li>The intended recipient of an encrypted message must be able to decrypt it and</li>
+<li>someone for whom the message was not intended should <em>not</em> be able to decrypt it.</li>
+</ul>
+<p>The <em>Kerckhoffs Doctrine</em> states that the <em>security of a cryptosystem should depend only on the secrecy of the key used, not on the secrecy of the system itself</em>.</p>
+<p>Beyond not just decrypting the message, the method of encryption should not yield probabilistic likelihoods of certain messages.</p>
+<h4 id="perfect-secrecy-and-invertiblity-functions">Perfect Secrecy and Invertiblity Functions</h4>
+<p>If functions are invertible then the input and output have the same distribution, so knowing the output yields no information about the input. We say that this scheme yields <em>perfect secrecy</em>.</p></div>
+</body>
+
+</html>
