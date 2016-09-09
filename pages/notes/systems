@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1</title>
+  <link rel="stylesheet" href="http://app.classeur.io/base-min.css" />
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+
+<body>
+  <div class="export-container"><h1 id="chapter-1">Chapter 1</h1>
+<h2 id="tracing-the-hello-program">Tracing the Hello Program</h2>
+<pre class=" language-c"><code class="prism  language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"hello, world\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="information-is-bits--context">Information is Bits + Context</h2>
+<p>The hello program begins life as a <em>source program</em> (a.k.a. <em>source file</em>) that is saved in a text file called hello.c. The text file is made up of bits, which are orgainzed into 8bit chunks called <em>bytes</em>. Each byte represents a text character in the program. It is important to understand that the representation of numbers is not infinite, it is finite because of its ingredients, bits.</p>
+<h2 id="programs-are-translated-by-other-programs-into-different-forms">Programs are translated by other programs into different forms</h2>
+<p>The high level hello program must be translated into a sequence of low level <em>machine-language</em> instructions. These instructions are packaged in a form called an <em>executable object program</em> and stored as a binary disk file (a.k.a. <em>executable object file</em>). On a Unix system the translation from source file to object file is performed by a <em>compiler driver</em>.</p>
+<h3 id="stepping-through-the-compilation-system">Stepping through the compilation system</h3>
+<pre class=" language-bash"><code class="prism  language-bash">$ gcc -o hello hello.c
+</code></pre>
+<p>gcc is a compiler driver. It reads the source file hello.c and translates it into an executable object file hello. The translation is performed in four phases (<em>preprocessor</em>, <em>compiler</em>, <em>assembler</em>, and <em>linker</em>). These four phases are collectively known as the <em>compilation system</em>.</p>
+<h4 id="preprocessing-phase"><em>Preprocessing Phase</em></h4>
+<p>The preprocessor (cpp) modifies the original c program according to directives that begin with the ‘#’ symbol. It reads the contents of the system header files and inserts them directly into program text. It outputs a C program with .i suffix.</p>
+<h4 id="compilation-phase"><em>Compilation Phase</em></h4>
+<p>The compiler (ccl) translates the text file hello.i into the text file hello.x which contains an <em>assembly language program</em>.</p>
+<h4 id="assembly-phase"><em>Assembly Phase</em></h4>
+<p>The assembler (as) translates hello.s into machine language instructions, packages them into  a <em>relocatable object program</em> and stores the result in hello.o.</p>
+<h4 id="linking-phase"><em>Linking Phase</em></h4>
+<p>The linker (ld) handles the ability of the program to call funcitons like printf which exist in a separate precompiled object file called printf.o. It results in a hello file which is an executable object file that can be executed by the system.</p>
+<h2 id="it-pays-to-understand-how-compilation-systems-work">It pays to Understand How Compilation Systems Work</h2>
+<p>Why should we understand how the compilation system works?</p>
+<ul>
+<li>increase performance</li>
+<li>understand link-time errors (errors that occur during linking phase)</li>
+<li>avoid security holes</li>
+</ul>
+<h2 id="processors-read-and-interpret-instructions-stored-in-memory">Processors Read and Interpret Instructions Stored in Memory</h2>
+<p>Running the executable file on the Unix system</p>
+<pre class=" language-bash"><code class="prism  language-bash">$ ./hello
+hello, world
+$
+</code></pre>
+<p>So what happens to our program when we run it. In order to answer this we need to look at the hardware organization of a system.</p>
+<h4 id="buses">Buses</h4>
+<p>A collection of electrical conduits that carry bytes of information back and forth between components. Designed to transfer fixed size chunks of bytes known as <em>words</em>. The number of bytes in a word (<em>word size</em>) is a fundamental system parameter but mostly varies between 4 bytes or 8 bytes.</p>
+<h4 id="input-output-devices">Input Output Devices</h4>
+<p>For example keyboard, mouse, display, and disk drive for long term storage. Each I/O device is connected to the I/O bus by either a <em>controller</em> or an <em>adapter</em>. A controller is a chip in the device itself or in the system’s main circuit board (a.k.a. <em>the motherboard</em>). An adapter is a card that plugs into a slot on the motherboard.</p>
+<h4 id="main-memory">Main Memory</h4>
+<p>The <em>main memory</em> is a temporary storage device that holds both a program and that data it manipulates while the processor is executing the program. Orgaized as a linear array of bytes each with its own unique address, starting at 0.</p>
+<h4 id="processor">Processor</h4>
+<p>The <em>central processing unit</em> or CPU is the engine that interprets or <em>executes</em> instructions stored in main memory. At its core is a word-size storage device or <em>register</em> called the <em>program counter</em>. At any point in time the PC points at some machine language instruction in main memory. The entire time the computer has power the CPU is repeatedly executing the instruction pointed at by the program counter and updating the program counter to point at the next instruction. There are only a few instructions that the CPU can actually perform defined by its <em>instruction set architecture</em>. They revolve around the <em>main memory</em>, the <em>register file</em>, and the <em>arithmetic logic unit</em>.</p>
+<p>Simple operations the CPI might carry out at the request of an instructions</p>
+<ul>
+<li><em>Load</em> : Copy a byte or a word from main memory into a register, overwriting the previous contents of the register</li>
+<li><em>Store</em>: Copy a byte or a word from a register to a location in main memory</li>
+<li><em>Operate</em>: Copy the contents of two registers to the ALU and perform an arithmetic operation on the two words, store the result in a register, overwriting the previous contents</li>
+<li><em>Jump</em>: Extract a word from the instruction itself and copy that word into the program counter overwriting the previous value of the PC.</li>
+</ul>
+<h2 id="running-the-hello-program">Running the Hello Program</h2>
+<p>The shell program loads the executable hello file by executing a sequence of instructions, that copies the code and data in the hello object file from disk to main memory. Once the code and data are loaded into memory the processor executes the machine language instructions in the hello program’s main routine. These instructions copy the bytes in the string to a register file, and from there to a display device, where they are displayed on screen.</p>
+<h2 id="caches-matter">Caches Matter</h2>
+<p>The system spends a lot of time moving information from one place to another. There is an inverse relationship between speed and size. The disk drive might be 1,000 times larger than the main memoru, but it might take the processor 10,000,000 times longer to read a word from disk than from memory. A typical register file stores only a few hundred bytes of information as opposed to the billions of bytes in main memory, however processors can read data from the register file almost 100 times faster than from memory.</p>
+<p><em>The Processor-memory gap</em> is the difference between processor read times and memory read times, and it continues to grow with processors becoming increasingly fast due to technology. To deal with this gap designers create <em>cache memories</em> that temporarily store information that the processor will need in the near future. There are usually different sized caches which can be accessed at different rates, again with larger being slower, and smaller being faster. They range in size from tens of thousands to millions of bytes.</p>
+<p><em>Locality</em> is the strategy caches exploit, namely the tendency for programs to access data and code in localized regions. By setting up caches to hold data that are likely to be accessed often, we can perform most memory operations using the fast caches.</p>
+<h2 id="storage-devices-form-a-hierarchy">Storage Devices Form a Hierarchy</h2>
+<p>The storage devices in every computer system are organized as a <em>memory hierarchy</em>. As we move from top to bottom the devices become slower, larger, and less costly per byte. The main idea is that the storage at one level serves as a cache for storage at the next lower level.</p>
+<h2 id="the-operating-system-manager-the-hardware">The Operating System Manager the Hardware</h2>
+<p>When we load and run a program, the program does not access the keyboard, display, disk, or main memory directly, instead it relies on services provided by the <em>operating system</em>. The operating system is like a software blanket covering the hardware. All attempts to access the hardware must pass through the operating system.</p>
+<p>Purpose of the operating system</p>
+<ol>
+<li>To protect the hardware from misuse</li>
+<li>To provide applications with simple and uniform methods for manipulating complicated and wildly different low-level hardware devices.</li>
+</ol>
+<p>Common Operating Abstractions and their meanings</p>
+<ul>
+<li><em>files</em> - abstractions for input output devices</li>
+<li><em>virtual memory</em> - abstraction for main memory and disk I/O devices</li>
+<li><em>processes</em> - abstractions for the processor, main memory, and I/O devices</li>
+</ul>
+<h3 id="processes">Processes</h3>
+<p>The operating system provides the illusion that the hello program is the only one running on the system. This illusion is provided by the notion of a <em>process</em>.</p>
+<p><em>Process</em> is the operating system’s abstraction for a running program. Multiple processes can run concurrently on the same system, by interleaving the instructions of each of the processes. A <em>multicore processor</em> is a processor that can execute several programs simultaneously.</p>
+<p><em>context switching</em> is the act of switching processes, performed by the operating system to give the illusion of each process running by itself. The operating system keeps track of all the state information that the process needs in order to run. This state, known as the <em>context</em> includes information such as the current values of the PC, the register file, and the contents of the main memory. At any point in time, a uniprocessor system can only execute the code for a single process. When the operating system decides to run a new process, it performs a <em>context switch</em> by saving the context of the current process, restoring the context of the new process, and then passing control to the new process, which then starts exactly where it left off.</p>
+<p>When we ask the shell to run our hello program, the shell invokes a function called a <em>system call</em> that passes control to the operating system. The OS saves the shell’s context, creates a hello process and context, and passes control to the hello porcess. After hello terminates the OS restores the context of the shell process, and passes control back to it. The transition from one process to another is managed by the OS <em>kernel</em>.</p>
+<p>The <em>kernel</em> is the portion of the operating system code that is always in memory. When an application program requires some action by the OS, it executes a special <em>system call</em> instruction, transferring control to the kernel. The kernel then performs the requested operation and returns back to the application program. The kernel is not a separate process, it is a collection of code and datastructures used by the system to manage all the processes.</p>
+<h3 id="threads">Threads</h3>
+<p>In modern systems a process can actually consist of multiple execution units, called <em>threads</em>, each running in the context of the process and sharing the same code and global data. Threads are important because it is easier to share data between multiple threads than between multiple processes, and because threads are typically more efficient. Multi-threading is one way to make programs run faster when multiple processors are available.</p>
+<h3 id="virtual-memory">Virtual Memory</h3>
+<p><em>Virtual Memory</em> is an abstraction that provides each process with the illusion that it has exclusive use of main memory. Each process is provided with the same uniform view of memory known as the <em>virtual address space</em>. The upper region of the address space (high number addresses) is reserved for code and data in the OS common to all processes. The lower region of the address space holds code defined by the users process.</p>
+<p>Areas of virtual memory</p>
+<ul>
+<li><em>Program code and data</em> code and data areas are initialized directly from teh contents of an executable object file. Begins at the same fixed address for all processes</li>
+<li><em>Heap</em> The code and data are of a fixed size once the process begins, but the heap expand and contracts dynamically at run time as a result of calls to C standard library routines such as malloc and free</li>
+<li><em>Shared Libraries</em> in the middle of the address space. This contains libraries such as the C standard library and the math library. Shared libraries use dynamic linking</li>
+<li><em>Stack</em> at the top of the user’s virtual address space, the user stack is used to implement function calls. Expands and contracts dynamically throughout the execution of the program. Each time we call a function the stack grows, each time we return from a function the stack contracts.</li>
+<li><em>Kernel Virtual Memory</em> the top of the virtual memory is reserved for the kernel. Programs are not allowed to read or write the contents of this area. They must invoke the kernel to perform these operations</li>
+</ul>
+<h3 id="files">Files</h3>
+<p>A sequence of bytes, every I/O device is modeled as a file. All I/O in the system is performed by reading and writing files using a small set of the system known as Unix I/O. This abstractions lets programmers treat all hardware in a uniform way, as a file, regardless of the specific hardware implementation.</p>
+<h2 id="systems-communicate-with-other-systems-using-networks">Systems Communicate with Other Systems Using Networks</h2>
+<p>The network can be viewed jsut as another I/O device, when teh system copies a sequence of bytes from main memory to the network adapter, it sends data to another machine. Similarly the system can read data sent from other machines and copy this data to main memory.</p>
+<p>We could run the hello program on a remote machine using telnet client. We use a telnet <em>client</em> running on a local machine to connect to a telnet <em>server</em> running on a remote machine. We can log in to the remote machine, run a shell, and the remote shell can then be used to run the hello program remotely.</p>
+<h2 id="important-themes">Important Themes</h2>
+<p>A system is more than just hardware, it is a collection of intertwined hardware and systems software that must cooperate in order to achieve the goal of running application programs.</p>
+<h3 id="amdahls-law">Amdahl’s Law</h3>
+<p>When we speed up one part of a system, the effect on the overal system performance depends on how significant the part was and how mcuh it sped up. Let \(T_{old}\) be the amount of time it takes a system to execute an application. Say a part of the system requires a fraction \(\alpha\) of this time, and that we improve its performance by a factor of \(k\). So the component originally required time \(\alpha T_{old}\) but now required time \((\alpha T_{old})/k\). Then the overall execution time becomes<br>
+\[
+\begin{align}
+T_{new} &amp; = (1 - \alpha) T_{old} + (\alpha T_{old})/k \\
+&amp; = T_{old}[(1 - \alpha) + \alpha/k]
+\end{align}
+\]</p>
+<p>From this we can compute the speedup \(S = T_{old}/T_{new}\) as<br>
+\[
+\begin{align}
+S &amp; = \frac{1}{(1- \alpha) + \alpha / k}
+\end{align}
+\]</p>
+<p>The major insight of Amdahl’s law is that to significantly speed up the entire system, we must improve the speed of a very large fraction of the overall system. Even if we speed up 60% of a system to the point where it takes almost no time ( \(k = \infty\)) we only get a speed up of \(1/0.4 = 2.5\times\)</p>
+<h3 id="concurrency-and-parallelism">Concurrency and Parallelism</h3>
+<p><em>concurrency</em> refers to the general concept of a system with multiple simultaneous activites.</p>
+<p><em>parallelism</em> refers to the use of concurrency to make a system run faster.</p>
+<h3 id="three-levels-of-parallelism-abstraction">Three Levels of Parallelism Abstraction</h3>
+<h4 id="thread-level-concurrency">Thread Level Concurrency</h4>
+<p>We can have <em>concurrency</em> by using the process abstraction to run multiple programs at the smae time. With threads, we can have multiple control flows executing within a single process.This used to be simulated by having a single processor switching between multiple tasks very rapidly, like a juggler keeping balls in the air. This configuration is known as a <em>uniprocessor system</em>.</p>
+<p>A <em>multiprocessor system</em> has multiple processors all under the control of a single operating system kernel. They have become commonplace with the advent of <em>multi-core</em> processors and <em>hyperthreading</em>.</p>
+<p><em>multi-core processors</em> have several CPU’s (cores) integreated onto a single integrated circuit chip. Each core typically has its own L1 (level 1?) and L2 caches.</p>
+<p><em>hyperthreading</em> or <em>simultaneous muti-threading</em> allows a single CPU to execute multiple flows of control. It involves having multiple copies of some CPU hardware such as the program counter (PC) and registers but only having single copies of other hardware, like the units that perform floating point arithmetic. Using this technology a four core processor can run 8 threads simultaneously (in parallel).</p>
+<h4 id="instruction-level-parallelism">Instruction Level Parallelism</h4>
+<p>Modern processors can execute multiple instructions at one time. Processors that can sustain execution rates faster than 1 instruction per cycle are known as <em>superscalar</em> processors.</p>
+<h4 id="single-instruction-multiple-data-simd-parallelism">Single Instruction Multiple Data (SIMD) Parallelism</h4>
+<p>Many processors have hardware that allows a single instruction to cause multipoel operations to be performed in parallel. These are mostly used to speed up applications that process image, sound, and video data.</p>
+<h3 id="the-importance-of-abstractions-in-computer-systems">The importance of Abstractions in Computer Systems</h3>
+<p>Allows programmers to use code without having to delve into its inner workings. We have seen a lot so far <em>instruciton set architecture</em> , <em>files</em>, <em>virtual memory</em>. Another is the <em>virtual machine</em> an abstraction of the entire computer which is an abstraction for every aspect of the computer. This has become more relevant recently since computers have to run programs for different operating systems.</p>
+<h2 id="summary">Summary</h2>
+<p>Computer system consists of hardware  and systems software that cooperate to run application programs, Information inside the computer is represented as groups of bits that are interpreted in different ways, depending on the context. Programs are translated by other programs into different forms, beginning as ASCII text and th’en translated by compilers and linkers into binary executable files.</p>
+<p>Processors read and interpret binary instructions that are stored in main memory. Since computers spend most of their time copying data between memory, I/O devices, and the CPU registers, the storage devices in a system are arranged in a hierarchy, with the CPU registers at the top, followed by multiple levels of hardware cache memories, DRAM main memory, and disk storage. Storage devices that are higher in the hierarchy are faster and more costly per bit than those lower in the hierarchy. Storage devices that are higher in the hierarchy serve as caches for c,le-vices that are lower in the hierarchy. Programmers can optimize the performance of their C programs by understanding and exploiting the memory hierarchy.</p>
+<p>The operating system kernel serves as an intermediary between the’ application and the hardware. It provides three fundamental abstractions: (1) Files are abstractions for I/O devices. (2) Virtual memory is an abstraction for both main memory and disks. (3) Processes are abstractions for the processor, main meniory, and I/O devices. Finally, networks provide ways for computer systems to communicate with one another. From the viewpoint of a particular system, the network is just another I/O device</p></div>
+</body>
+
+</html>
